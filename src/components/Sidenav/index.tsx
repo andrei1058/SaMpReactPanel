@@ -1,7 +1,7 @@
 import React from 'react';
 
-import DesktopSidebar  from "../../components/Sidenav/DesktopSidebar";
-import MobileSidebar from '../../components/Sidenav/MobileSidebar';
+import DesktopSidebar  from "./DesktopSidebar";
+import MobileSidebar from './MobileSidebar';
 
 function Sidenav() {
   return (

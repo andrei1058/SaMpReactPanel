@@ -2,7 +2,7 @@ import React from 'react';
 import { useTranslation } from "react-i18next";
 import { Link } from 'react-router-dom';
 
-const RenderCategoryDivider = ({name}) => {
+const RenderCategoryDivider = ({name}: any) => {
     return (
         <p className="text-sm mt-4 ml-4 pb-1 font-sans font-thin">{name}</p>
     );

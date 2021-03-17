@@ -2,17 +2,21 @@ import React from 'react';
 import { useTranslation } from "react-i18next";
 import { Link } from 'react-router-dom';
 
-const DropdownItem = ({toTranslate, string, goTo}) => {
+const DropdownItem = ({toTranslate, path, goTo}: any) => {
     const {t} = useTranslation();
     return(
         <Link to={goTo}>
-            <a href="#" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" role="menuitem">{toTranslate ? t(string) : string}</a>
+            <a href="#" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" role="menuitem">{toTranslate ? t(path) : path}</a>
         </Link>
     );
 };
 
 const ToggleBlur = () => {
-    setTimeout(()=> {document.activeElement.blur()}, 250);
+    setTimeout(()=> {
+        if (document.activeElement != null){
+            document.activeElement.parentElement?.blur();
+        }
+    }, 250);
 }
 
 export default class Header extends React.Component {
