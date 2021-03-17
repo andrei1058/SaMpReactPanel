@@ -1,3 +1,5 @@
+![Screenshot](./screenshots/development1.png)
+
 # Contributing
 
 Once you've cloned it create a file called .env.development.local and put this key value followed by your db connection:
