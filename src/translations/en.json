@@ -1,0 +1,33 @@
+{
+    "welcome":{
+        "title": "Welcome {{username}}"
+    },
+    "sidebar":{
+        "index": "Dashboard",
+        "bans": "Ban List",
+        "factions": "Factions",
+        "clans": "Clans",
+        "wars": "Wars",
+        "staff": "Staff",
+        "top-player": "Top Player",
+        "support": "Ticket",
+        "dealership": "Dealership",
+        "search": "Search player",
+        "category": {
+            "groups": "Groups",
+            "stats": "Stats",
+            "support": "Support"
+        }
+    },
+    "header": {
+        "profile": "Your profile",
+        "log-out": "Sign Out"
+    },
+    "overview":{
+        "online-count": "Online Players",
+        "online-admins": "Online Admins",
+        "online-leaders": "Online Leaders",
+        "owned-cars": "Owned Vehicles",
+        "owned-houses": "Owned Houses"
+    }
+}

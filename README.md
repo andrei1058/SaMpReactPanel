@@ -1,3 +1,10 @@
+# Contributing
+
+Once you've cloned it create a file called .env.development.local and put this key value followed by your db connection:
+```env
+PORT=3000
+```
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
