@@ -2,7 +2,7 @@
 
 # Contributing
 
-Once you've cloned it create a file called .env.development.local and put this key value followed by your db connection:
+Once you've cloned it create a file called .env.development.local and put this key followed by a desired port:
 ```env
 PORT=3000
 ```
