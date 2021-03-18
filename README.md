@@ -1,4 +1,4 @@
-![Screenshot](./screenshots/development1.png)
+![Screenshot](./screenshots/development2.png)
 
 # Contributing
 

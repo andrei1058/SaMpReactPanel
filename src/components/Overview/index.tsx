@@ -2,6 +2,8 @@ import React from 'react';
 import CountItemComponent from './CountItemComponent';
 import { useTranslation } from 'react-i18next';
 import { ShowNewsArticle } from './NewsArticleComponent';
+import { FactionLogComponent } from './FactionLogComponent';
+import { LoadingGif } from './LoadingGif';
 
 const usersIcon = () => {
     return (
@@ -50,11 +52,11 @@ export default function Overview() {
     return (
         <div className="mt-5 pb-5 pt-5">
             <div className="text-gray-500 grid grid-cols-5 gap-4">
-                <CountItemComponent uri={'/users/count?type=online'} icon={usersIcon} msg={t('overview.online-count')} />
-                <CountItemComponent uri={'/users/count?type=admin_online'} icon={adminIcon} msg={t('overview.online-admins')} />
-                <CountItemComponent uri={'/users/count?type=leader_online'} icon={leaderIcon} msg={t('overview.online-leaders')} />
-                <CountItemComponent uri={'/cars/count?type=owned'} icon={carsIcon} msg={t('overview.owned-cars')} />
-                <CountItemComponent uri={'/houses/count?type=owned'} icon={housesIcon} msg={t('overview.owned-houses')} />
+                <CountItemComponent uri={'/users/count/online'} icon={usersIcon} msg={t('overview.online-count')} />
+                <CountItemComponent uri={'/users/count/admin_online'} icon={adminIcon} msg={t('overview.online-admins')} />
+                <CountItemComponent uri={'/users/count/leader_online'} icon={leaderIcon} msg={t('overview.online-leaders')} />
+                <CountItemComponent uri={'/cars/count/owned'} icon={carsIcon} msg={t('overview.owned-cars')} />
+                <CountItemComponent uri={'/houses/count/owned'} icon={housesIcon} msg={t('overview.owned-houses')} />
             </div>
             <div className="mt-7">
                 <div className="grid grid-cols-2 gap-7">
@@ -72,66 +74,7 @@ export default function Overview() {
                         <p className="text-lg font-bold text-gray-800">Factions History</p>
                         <div className="container">
                             <div className="flex flex-col md:grid grid-cols-9 mx-auto p-2">
-                                <div className="flex flex-row-reverse md:contents">
-                                    <div className="col-start-1 col-end-5 p-3 rounded-xl my-1 ml-auto bg-white border-green-500 border shadow-md">
-                                        <h3 className="font-semibold text-md mb-1">Lorem ipsum</h3>
-                                        <p className="leading-tight text-sm">
-                                            Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                                        </p>
-                                    </div>
-                                    <div className="col-start-5 col-end-6 md:mx-auto relative mr-10">
-                                        <div className="h-full w-6 flex items-center justify-center">
-                                            <div className="h-full w-1 bg-gray-800 pointer-events-none"></div>
-                                        </div>
-                                        <div className="w-6 h-6 absolute top-1/2 -mt-3 rounded-full bg-green-300 shadow"></div>
-                                    </div>
-                                </div>
-
-                                <div className="flex md:contents">
-                                    <div className="col-start-5 col-end-6 mr-10 md:mx-auto relative">
-                                        <div className="h-full w-6 flex items-center justify-center">
-                                            <div className="h-full w-1 bg-gray-800 pointer-events-none"></div>
-                                        </div>
-                                        <div className="w-6 h-6 absolute top-1/2 -mt-3 rounded-full bg-red-500 shadow"></div>
-                                    </div>
-                                    <div className="col-start-6 col-end-10 p-3 rounded-xl my-1 mr-auto bg-white border border-red-500 shadow-md">
-                                        <h3 className="font-semibold text-md mb-1">Lorem ipsum</h3>
-                                        <p className="leading-tight text-sm">
-                                            Lorem ipsum, dolor sit amet consectetur adipisicing elit.
-                                        </p>
-                                    </div>
-                                </div>
-
-                                <div className="flex md:contents">
-                                    <div className="col-start-5 col-end-6 mr-10 md:mx-auto relative">
-                                        <div className="h-full w-6 flex items-center justify-center">
-                                            <div className="h-full w-1 bg-gray-800 pointer-events-none"></div>
-                                        </div>
-                                        <div className="w-6 h-6 absolute top-1/2 -mt-3 rounded-full bg-red-500 shadow"></div>
-                                    </div>
-                                    <div className="col-start-6 col-end-10 p-3 rounded-xl my-1 mr-auto bg-white border border-red-500 shadow-md">
-                                        <h3 className="font-semibold text-md mb-1">Lorem ipsum</h3>
-                                        <p className="leading-tight text-sm">
-                                            Lorem ipsum, dolor sit amet consectetur adipisicing elit.
-                                        </p>
-                                    </div>
-                                </div>
-
-                                <div className="flex flex-row-reverse md:contents">
-                                    <div className="col-start-1 col-end-5 p-3 rounded-xl my-1 ml-auto bg-white border-green-500 border shadow-md">
-                                        <h3 className="font-semibold text-md mb-1">Lorem ipsum</h3>
-                                        <p className="leading-tight text-sm">
-                                            Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                                        </p>
-                                    </div>
-                                    <div className="col-start-5 col-end-6 md:mx-auto relative mr-10">
-                                        <div className="h-full w-6 flex items-center justify-center">
-                                            <div className="h-full w-1 bg-gray-800 pointer-events-none"></div>
-                                        </div>
-                                        <div className="w-6 h-6 absolute top-1/2 -mt-3 rounded-full bg-green-500 shadow"></div>
-                                    </div>
-                                </div>
-
+                                <FactionHistory />
                             </div>
                         </div>
                     </div>
@@ -139,4 +82,48 @@ export default function Overview() {
             </div>
         </div>
     );
+}
+
+class FactionHistory extends React.Component {
+
+    state = {
+        lastestId: -1 as number,
+        logs: [] as any
+    }
+
+    fetchLogs() {
+        fetch('/api/factions/history')
+            .then(response => response.json())
+            .then(json => {
+                if (json.logs.length != 0 && this.state.lastestId != json.logs[0].f_logID) {
+                    this.setState({ logs: json.logs, latestId: json.logs[0].f_logID })
+                }
+            })
+            .catch(() => this.setState({ logs: [] }))
+    }
+
+    componentDidMount() {
+        this.fetchLogs();
+        setInterval(() => {
+            this.fetchLogs();
+        }, 60000)
+    }
+
+    render() {
+        if (this.state.logs.length == 0) {
+            return (<LoadingGif />);
+        } else {
+            return (
+                <>
+                    {Object.keys(this.state.logs).map(key => (
+                        <FactionLogComponent key={key} message={this.state.logs[key].f_logText} action={this.state.logs[key].f_logStatus}
+                            player2={this.state.logs[key].server_accounts_server_accountsToserver_faction_logs_f_logByID}
+                            player1={this.state.logs[key].server_accounts_server_accountsToserver_faction_logs_f_logPlayer}
+                            extremity={key == '0' ? -1 : parseInt(key) == this.state.logs.length - 1 ? 1 : 0} />
+                    ))}
+                </>
+            );
+
+        }
+    }
 }
