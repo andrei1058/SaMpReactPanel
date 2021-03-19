@@ -29,5 +29,11 @@
         "online-leaders": "Online Leaders",
         "owned-cars": "Owned Vehicles",
         "owned-houses": "Owned Houses"
+    },
+    "login":{
+        "under-logo": "Log in to your account",
+        "label-username": "Username",
+        "label-password": "Password",
+        "login-button": "Log in"
     }
 }

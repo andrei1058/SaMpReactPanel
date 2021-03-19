@@ -47,7 +47,7 @@ export class FactionLogComponent extends React.Component<LogComponents> {
         if (this.props.action && this.props.action == 1) {
             return (
                 <div className="flex flex-row-reverse md:contents">
-                    <div className="col-start-1 col-end-5 p-3 rounded-xl my-1 ml-auto bg-white border-green-400 border leading-tight text-sm">
+                    <div className="col-start-1 col-end-5 p-3 rounded-xl my-1 ml-auto bg-white leading-tight text-sm">
                         {this.replaceNames()}
                     </div>
                     <div className="col-start-5 col-end-6 md:mx-auto relative mr-10">
