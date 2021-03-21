@@ -1,8 +1,7 @@
 import { Redirect } from 'react-router';
-import { logOut } from '../../Account';
+import UserAccount from '../../containers/Account';
 
 export const Logout = (props: any) => {
-    logOut();
-    props.onLoginState(false);
+    UserAccount.logOut();
     return <Redirect to="/" />;
 }

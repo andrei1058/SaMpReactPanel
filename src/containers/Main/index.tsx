@@ -1,18 +1,19 @@
 import { Switch, Route } from 'react-router-dom';
-import { logOut } from '../../Account';
 import Login from '../../components/Login';
 import { Logout } from '../../components/Logout';
 import Overview from '../../components/Overview';
+import { ArticleEditor } from '../News/AddArticleContainer';
 
-const Main = (propss: any)  =>{
+const Main = (propss: any) => {
 
     return (
         <main className="overflow-y-auto overscroll-none">
-            <div className="container px-6 mx-auto">
+            <div className="px-6 mx-auto">
                 <Switch>
                     <Route exact path="/" component={Overview} />
-                    <Route exact path="/login" render={(props) => (<Login onLoginState={propss.onLoginState} />)} />
-                    <Route exact path="/logout" render={(props) => (<Logout onLoginState={propss.onLoginState} />)} />
+                    <Route exact path="/login" component={Login} />
+                    <Route exact path="/logout" component={Logout} />
+                    <Route exact path="/news/add" component={ArticleEditor} />
                 </Switch>
             </div>
         </main>

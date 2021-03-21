@@ -1,4 +1,6 @@
-![Screenshot](./screenshots/development2.png)
+![Screenshot](./screenshots/index.png)
+![Screenshot](./screenshots/add-article.png)
+![Screenshot](./screenshots/login.png)
 
 # Contributing
 

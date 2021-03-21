@@ -8,6 +8,7 @@ import i18next from "i18next";
 import {BrowserRouter} from 'react-router-dom';
 
 import lang_en from './translations/en.json';
+import UserAccount from './containers/Account';
 
 i18next.init({
     interpolation: { escapeValue: false },  // React already does escaping
@@ -18,6 +19,8 @@ i18next.init({
       }
     }
 });
+
+UserAccount.init();
 
 ReactDOM.render(
   <React.StrictMode>

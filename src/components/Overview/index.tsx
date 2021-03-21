@@ -1,9 +1,9 @@
 import React from 'react';
 import CountItemComponent from './CountItemComponent';
 import { useTranslation } from 'react-i18next';
-import { ShowNewsArticle } from './NewsArticleComponent';
 import { FactionLogComponent } from './FactionLogComponent';
 import { LoadingGif } from './LoadingGif';
+import NewsContainer from '../../containers/News';
 
 const usersIcon = () => {
     return (
@@ -60,18 +60,9 @@ export default function Overview() {
             </div>
             <div className="mt-7">
                 <div className="grid grid-cols-2 gap-7">
+                    <NewsContainer />
                     <div className="w-2/2 h-auto inline-block">
-                        <p className="text-lg font-bold text-gray-700">News</p>
-                        <div className="mt-1 gap-2 space-y-7 ml-10">
-                            {ShowNewsArticle("Update")}
-                            {ShowNewsArticle("New faction added!")}
-                            {ShowNewsArticle("New faction added!")}
-                            {ShowNewsArticle("New faction added!")}
-                            {ShowNewsArticle("New faction added!")}
-                        </div>
-                    </div>
-                    <div className="w-2/2 h-auto inline-block">
-                        <p className="text-lg font-bold text-gray-800">Factions History</p>
+                        <p className="text-lg font-bold text-gray-800">{t("overview.factions-header")}</p>
                         <div className="container">
                             <div className="flex flex-col md:grid grid-cols-9 mx-auto p-2">
                                 <FactionHistory />

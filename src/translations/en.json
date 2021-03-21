@@ -28,12 +28,20 @@
         "online-admins": "Online Admins",
         "online-leaders": "Online Leaders",
         "owned-cars": "Owned Vehicles",
-        "owned-houses": "Owned Houses"
+        "owned-houses": "Owned Houses",
+        "news-header": "News",
+        "factions-header": "Factions History",
+        "add-article": "Add article"
     },
     "login":{
         "under-logo": "Log in to your account",
         "label-username": "Username",
         "label-password": "Password",
-        "login-button": "Log in"
+        "login-button": "Log in",
+        "recover-button": "Forgot your password?",
+        "bad-credentials": "Bad credentials"
+    },
+    "article":{
+        "by-author": "by {username}"
     }
 }
